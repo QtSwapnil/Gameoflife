@@ -1,0 +1,18 @@
+pipeline {
+agent  {label 'OPENJDK'}
+    stages {
+        stage('vcs') {
+            steps {
+                git branch: 'main' ,url: 'git@github.com:GitpracticerepoSwapnil/spring-petclinic.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh '/usr/share/maven/bin/mvn package'
+            }
+        stage('archive') {
+            steps {
+                junit '**/surefire-reports/*.xml'
+            }        
+    }
+}
