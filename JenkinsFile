@@ -14,5 +14,7 @@ agent  any
             steps {
                 junit '**/surefire-reports/*.xml'
             }        
+            }
+        }
     }
 }
