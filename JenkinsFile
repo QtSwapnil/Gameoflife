@@ -3,7 +3,7 @@ agent  any
     stages {
         stage('vcs') {
             steps {
-                git branch: 'main' ,url: 'git@github.com:GitpracticerepoSwapnil/spring-petclinic.git'
+                git branch: 'main' ,url: 'https://github.com/GitpracticerepoSwapnil/spring-petclinic.git'
             }
         }
         stage('build') {
