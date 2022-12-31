@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'OPENjdk' }
     stages {
         stage('vcs') {
             steps {
@@ -8,6 +8,7 @@ pipeline {
             }
         }
         stage('build') {
+   		agent { label 'OPENjdk' }
             steps {
                 sh '/usr/share/maven/bin/mvn package' 
             }
