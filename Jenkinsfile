@@ -1,6 +1,7 @@
 pipeline {
     agent  { label 'OPENjdk' }
     triggers {
+
         pollSCM('* * * * *')
     }
     stages {
