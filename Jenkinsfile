@@ -1,22 +1,22 @@
 pipeline {
-    agent { label 'OPENjdk' }
+    agent  { label 'OPENjdk' }
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/GitpracticerepoSwapnil/spring-petclinic.git',
-                    branch: 'main' 
+                git branch: 'main', url: 'https://github.com/GitpracticerepoSwapnil/spring-petclinic.git'
             }
+
         }
         stage('build') {
-   		agent { label 'OPENjdk' }
             steps {
-                sh '/usr/share/maven/bin/mvn package' 
+                sh 'mvn package'
             }
         }
-        stage('archive') {
+        stage('archive results') {
             steps {
                 junit '**/surefire-reports/*.xml'
-            }        
-        }
+            }
         }
     }
+
+}
