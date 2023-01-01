@@ -15,6 +15,7 @@ pipeline {
         stage('archive results') {
             steps {
                 junit '**/surefire-reports/*.xml'
+		    archiveArtifacts artifacts: '**/spring-petclinic*.jar', followSymlinks: false
             }
         }
     }
