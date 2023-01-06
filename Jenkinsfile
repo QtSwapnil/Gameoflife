@@ -1,5 +1,5 @@
 pipeline {
-    agent  { label 'OPENjdk' }
+    agent any
     triggers {
         pollSCM('* * * * *')
     }
