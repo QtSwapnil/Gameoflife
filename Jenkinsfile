@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'OPENjdk'}
     triggers {
         
         pollSCM('* * * * *')
@@ -19,11 +19,22 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        stage('archive results') {
-            steps {
-                junit '**/surefire-reports/*.xml'
-		    archiveArtifacts artifacts: '**/spring-petclinic*.jar', followSymlinks: false
-            }
+    }
+    	    post {
+        always {
+            echo 'Job completed'
+            mail subject: 'Build Completed', 
+                  body: 'Build Completed', 
+                  to: 'qtdevops@gmail.com'
         }
+        failure {
+            mail subject: 'Build Failed', 
+                  body: 'Build Failed', 
+                  to: 'qtdevops@gmail.com' 
+        }
+        success {
+            junit '**/surefire-reports/*.xml'
+        }
+
     }
 }
