@@ -33,6 +33,10 @@ pipeline {
                   to: 'qtdevops@gmail.com' 
         }
         success {
+            mail subject: "Build Success", 
+                  body: "Build Success for $env.BUILD_DISPLAY_NAME", 
+                  to: 'qtdevops@gmail.com'
+                  
             junit '**/surefire-reports/*.xml'
         }
 
