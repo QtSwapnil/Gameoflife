@@ -6,6 +6,9 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
+                  mail subject: 'Build Started', 
+                  body: 'Build Started', 
+                  to: 'qtdevops@gmail.com' 
                 git branch: 'main', url: 'https://github.com/GitpracticerepoSwapnil/spring-petclinic.git'
             }
 
@@ -22,5 +25,4 @@ pipeline {
             }
         }
     }
-
 }
